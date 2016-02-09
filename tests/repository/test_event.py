@@ -29,3 +29,16 @@ class TestEvent(unittest.TestCase):
         event.load("TEST")
         self.assertEqual("TEST", event.label)
 
+    def test_update(self):
+        Event(label="TEST", name="name1").save()
+
+        event = Event()
+        event.load("TEST")
+        event.name = "name2"
+        event.save()
+
+        event.load("TEST")
+
+        self.assertEqual(len(event.all()), 1)
+        self.assertEqual(event.name, "name2")
+
