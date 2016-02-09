@@ -8,6 +8,11 @@ setup(
     author = "Diego Rubin",
     author_email = "rubin.diego@gmail.com",
     license = "",
+    scripts=['bin/sems-start'],
+    install_requires = [
+        "tornado",
+        "tinydb"
+    ],
     packages = find_packages()
 )
 
