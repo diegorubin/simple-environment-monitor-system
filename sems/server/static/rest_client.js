@@ -6,7 +6,7 @@ var RestClient = function(service) {
         _this.xhttp.open(method, service, true);
         _this.xhttp.onreadystatechange = function() {
             if(_this.xhttp.readyState == 4 && _this.xhttp.status == 200) {
-                var data = JSON.parse(xhttp.responseText);
+                var data = JSON.parse(_this.xhttp.responseText);
                 if(_this.success) _this.success(data);
             }
         };

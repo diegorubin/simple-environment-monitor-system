@@ -23,7 +23,7 @@
                     <div id="form-wrap-monitor" class="hidden">
                         <form id="form-monitor" action="/api/monitors" method="post">
                             <label>Tipo:</label>
-                            <select name="type">
+                            <select name="monitor-type" id="monitor-type">
                                 {% for monitor_type in monitor_types %}
                                     <option value="{{monitor_type[1]}}">{{monitor_type[0]}}</option>
                                 {% end %}
@@ -32,7 +32,7 @@
                             <label>Url:</label>
                             <input type="text" name="url"/>
 
-                            <div id="specific-data"></div>
+                            <div id="custom-fields"></div>
                         </form>
                     </div>
                  </div>

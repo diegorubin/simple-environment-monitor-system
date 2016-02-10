@@ -21,6 +21,8 @@ var MonitorForm = function() {
             _this.getCustomFields();
         };
 
+        _this.dvCustomFields = document.getElementById('custom-fields');
+
         _this.getCustomFields();
     };
 
@@ -39,11 +41,26 @@ var MonitorForm = function() {
 
     this.getCustomFields = function() {
         var value = _this.slMonitorType.value;
-        console.log(value);
-        var client = new RestClient('/api/monitors/' + value + '/fields' );
-        client.success = function(data) {
-            console.log(data);
-        };
+
+        if(value != "") {
+            var client = new RestClient('/api/monitors/' + value + '/fields' );
+            client.success = function(data) {
+                data = data.data;
+                _this.dvCustomFields.innerHTML = '';
+                for(var field in data.fields) {
+                    var span = document.createElement('label');
+                    span.innerHTML = field;
+
+                    var input = document.createElement('input');
+                    input.type = data.fields[field].type;
+                    input.name = field;
+
+                    _this.dvCustomFields.appendChild(span);
+                    _this.dvCustomFields.appendChild(input);
+                }
+            };
+            client.call('GET')
+        }
     };
 
 };
