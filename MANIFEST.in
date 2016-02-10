@@ -1,0 +1,2 @@
+include sems/server/templates/*
+include sems/server/static/*

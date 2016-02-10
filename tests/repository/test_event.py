@@ -37,6 +37,7 @@ class TestEvent(unittest.TestCase):
         event.name = "name2"
         event.save()
 
+        event = Event()
         event.load("TEST")
 
         self.assertEqual(len(event.all()), 1)

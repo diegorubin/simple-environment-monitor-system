@@ -2,6 +2,7 @@ import unittest
 import httpretty
 
 from sems.monitors.text_monitor import TextMonitor
+from sems.monitors import check_alive
 
 
 SERVICE_URL = "http://localhost:8888/healthcheck"
@@ -18,8 +19,11 @@ class TestTextMonitor(unittest.TestCase):
         httpretty.reset()
 
     def test_alive(self):
-        monitor = TextMonitor(SERVICE_URL, "LIVE");
+        monitor = TextMonitor(SERVICE_URL, expected='LIVE');
         self.assertTrue(monitor.alive())
+
+    def test_check_alive(self):
+        self.assertTrue(check_alive('TextMonitor', SERVICE_URL, expected='LIVE'))
 
 if __name__ == '__main__':
     unittest.main()

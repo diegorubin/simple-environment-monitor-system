@@ -2,9 +2,11 @@
 
 import tornado
 from sems.server.dashboard import Dashboard
+from sems.server.static import Static
 
 app = tornado.web.Application([
     (r"/", Dashboard),
+    (r"/static/([\w_\.-]+)", Static),
 ])
 
 app.listen(8888)

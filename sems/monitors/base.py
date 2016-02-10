@@ -4,8 +4,9 @@ import urllib2
 
 class Base(object):
 
-    def __init__(self, entrypoint):
+    def __init__(self, entrypoint, **data):
         self.entrypoint = entrypoint
+        self.data = data
 
     @abstractmethod
     def alive(self):
