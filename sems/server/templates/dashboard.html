@@ -5,9 +5,9 @@
     <meta charset="UTF-8"/>
     <title>Simple Environment Monitor System</title>
 
-    <link rel="stylesheet" href="{{ static_url("bootstrap.css") }}" type="text/css">
-    <link rel="stylesheet" href="{{ static_url("bootstrap-theme.css") }}" type="text/css">
-    <link rel="stylesheet" href="{{ static_url("dashboard.css") }}" type="text/css">
+    <link rel="stylesheet" href="{{ static_url("bootstrap.css") }}" type="text/css" />
+    <link rel="stylesheet" href="{{ static_url("bootstrap-theme.css") }}" type="text/css" />
+    <link rel="stylesheet" href="{{ static_url("dashboard.css") }}" type="text/css"a />
 </head>
 
 <body>
@@ -30,9 +30,14 @@
                             </select>
 
                             <label>Url:</label>
-                            <input type="text" name="url"/>
+                            <input type="text" name="url" id="monitor-url"/>
+
+                            <label>Label:</label>
+                            <input type="text" name="label" id="monitor-label"/>
 
                             <div id="custom-fields"></div>
+
+                            <input type="submit" value="Salvar" />
                         </form>
                     </div>
                  </div>
@@ -44,8 +49,16 @@
                 <div id="monitors">
                     {% for monitor in monitors %}
                         <div class="monitor-entry">
-                            <strong class="label">{{monitor.label}}</strong>
-                            <span class="url">{{monitor.url}}</span>
+                            <h2 class="monitor-label">{{monitor.label}}</h2>
+                            <p>
+                                <span class="monitor-url">{{monitor.url}}</span>
+                            </p>
+                            <p>
+                                <span class="monitor-status"></span>
+                            </p>
+                            <p>
+                                <a href="#" class="monitor-remove">remover</a>
+                            </p>
                         </div>
                     {% end %}
                 </div>
@@ -57,6 +70,7 @@
 
     <script src="/static/rest_client.js"></script>
     <script src="/static/monitor_form.js"></script>
+    <script src="/static/monitor.js"></script>
     <script src="/static/dashboard.js"></script>
 </body>
 

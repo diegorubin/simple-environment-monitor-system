@@ -18,7 +18,7 @@ class TestDashboard(AsyncHTTPTestCase):
 
     def test_dashboard(self):
         label = "server.test"
-        monitor = Monitor(label=label)
+        monitor = Monitor(label=label, url='http://server.com')
         monitor.save()
 
         response = self.fetch('/')

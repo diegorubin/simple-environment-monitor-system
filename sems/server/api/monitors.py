@@ -25,6 +25,15 @@ class MonitorsHandler(Base):
         self.success({"monitor": monitor.get_attributes()})
 
 
+class MonitorDestroyHandler(Base):
+
+    def delete(self, label):
+        monitor = Monitor()
+        monitor.load(label)
+
+        self.success({"monitor": monitor.get_attributes(), "destroy": monitor.destroy()})
+
+
 class MonitorsCheckHandler(Base):
 
     def get(self, label):

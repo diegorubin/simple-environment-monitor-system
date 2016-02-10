@@ -12,6 +12,9 @@ class Base(object):
     def alive(self):
         pass
 
+    def get_url_response(self):
+        return urllib2.urlopen(self.entrypoint)
+
     def get_content(self):
-        return urllib2.urlopen(self.entrypoint).read()
+        return self.get_url_response().read()
 

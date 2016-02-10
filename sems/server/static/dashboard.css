@@ -5,3 +5,19 @@
 #commands-wrap {
     float:right;
 }
+
+.monitor-entry {
+    float:left;
+    min-width: 350px;
+    margin: 15px;
+    padding: 5px;
+}
+
+.live {
+    background-color: green;
+}
+
+.out {
+    background-color: red;
+}
+

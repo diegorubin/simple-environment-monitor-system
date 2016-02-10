@@ -10,6 +10,13 @@ var RestClient = function(service) {
                 if(_this.success) _this.success(data);
             }
         };
-        _this.xhttp.send(data);
+
+        if(data) {
+            _this.xhttp.setRequestHeader('Content-Type', 'application/json');
+            _this.xhttp.send(JSON.stringify(data));
+        } else {
+            _this.xhttp.send();
+        }
+
     };
 };

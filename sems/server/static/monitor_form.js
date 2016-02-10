@@ -6,6 +6,7 @@ var MonitorForm = function() {
         _this.form = document.getElementById('form-monitor');
         _this.form.onsubmit = function(event) {
             event.preventDefault();
+            _this.save();
         };
 
         _this.formWrap = document.getElementById('form-wrap-monitor');
@@ -27,6 +28,23 @@ var MonitorForm = function() {
     };
 
     this.save = function() {
+        var data = {};
+        data.url = document.getElementById('monitor-url').value;
+        data.monitor_type = _this.slMonitorType.value;
+        data.label = document.getElementById('monitor-label').value;
+        data.data = {};
+
+        var customFields = _this.dvCustomFields.getElementsByTagName('input');
+        for(var field in customFields) {
+            var customField = customFields[field];
+            data.data[customField.name] = customField.value;
+        }
+
+        var client = new RestClient('/api/monitors');
+        client.success = function(response) {
+            window.location.reload();
+        };
+        client.call('POST', data);
 
     };
 
@@ -41,12 +59,12 @@ var MonitorForm = function() {
 
     this.getCustomFields = function() {
         var value = _this.slMonitorType.value;
+        _this.dvCustomFields.innerHTML = '';
 
         if(value != "") {
             var client = new RestClient('/api/monitors/' + value + '/fields' );
             client.success = function(data) {
                 data = data.data;
-                _this.dvCustomFields.innerHTML = '';
                 for(var field in data.fields) {
                     var span = document.createElement('label');
                     span.innerHTML = field;

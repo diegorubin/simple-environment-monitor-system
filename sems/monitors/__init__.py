@@ -2,10 +2,14 @@ import sys
 import urllib2
 
 from text_monitor import TextMonitor
+from http_status_monitor import HTTPStatusMonitor
 
 CUSTOM_FIELDS = {
     r'TextMonitor': {
         'expected': {'type': 'text'}
+    },
+    r'HTTPStatusMonitor': {
+        'code': {'type': 'text'}
     }
 }
 

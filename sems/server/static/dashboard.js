@@ -3,8 +3,7 @@
     monitorForm.init();
 
     var monitors = document.getElementsByClassName('monitor-entry');
-    console.log(monitors);
-    for(var i = 0; i < monitors.lenght; i++) {
+    for(var i = 0; i < monitors.length; i++) {
         var monitor = new Monitor();
         monitor.init(monitors[i]);
     }
