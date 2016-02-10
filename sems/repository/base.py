@@ -11,7 +11,10 @@ class Base(object):
         self.table = self.db.table(self.__class__.__name__)
 
     def all(self):
-        return self.table.all()
+        monitors = []
+        for elem in self.table.all():
+            monitors.append(self.__class__(**elem))
+        return monitors
 
     def load(self, label):
         query = Query()

@@ -12,7 +12,7 @@ SERVICE_URL = "http://localhost:8888/healthcheck"
 class TestMonitors(AsyncHTTPTestCase):
 
     def tearDown(self):
-        if os._exists(sems.repository.base.TINY_DB_PATH):
+        if os.path.isfile(sems.repository.base.TINY_DB_PATH):
             os.remove(sems.repository.base.TINY_DB_PATH)
 
     def get_app(self):
@@ -34,4 +34,13 @@ class TestMonitors(AsyncHTTPTestCase):
         self.assertEqual(response.code, 200)
         self.assertEqual(len(Monitor().all()), 1)
 
+    def test_list(self):
+        label = 'test'
+
+        monitor = Monitor(label=label)
+        monitor.save()
+
+        response = self.fetch('/api/monitors')
+        self.assertEqual(response.code, 200)
+        self.assertIn(label, response.body)
 

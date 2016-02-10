@@ -2,39 +2,60 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Simple Environment Monitor System</title>
 
-    <link href="/static/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ static_url("bootstrap.css") }}" type="text/css">
+    <link rel="stylesheet" href="{{ static_url("bootstrap-theme.css") }}" type="text/css">
+    <link rel="stylesheet" href="{{ static_url("dashboard.css") }}" type="text/css">
 </head>
 
 <body>
 
-    <div id="page">
+    <div id="container">
 
         <div class="row" id="commands">
-            <h1>Simple Environment Monitor System</h1>
+            <div class="col-md-12">
+                <h1>Simple Environment Monitor System</h1>
 
-            <a href="#" id="new-monitor" class="btn btn-primary">Adicionar</a>
-            <div id="form-wrap-monitor" class="hidden">
-                <form action="/api/monitors" method="post">
-                    <label>Tipo:</label>
+                 <div id="commands-wrap">
+                    <a href="#" id="new-monitor" class="btn btn-primary">Adicionar Monitor</a>
+                    <div id="form-wrap-monitor" class="hidden">
+                        <form id="form-monitor" action="/api/monitors" method="post">
+                            <label>Tipo:</label>
+                            <select name="type">
+                                {% for monitor_type in monitor_types %}
+                                    <option value="{{monitor_type[1]}}">{{monitor_type[0]}}</option>
+                                {% end %}
+                            </select>
 
-                    <label>Url:</label>
-                    <input type="text" name="url"/>
+                            <label>Url:</label>
+                            <input type="text" name="url"/>
 
-                    <div id="specific-data"></div>
-                </form>
+                            <div id="specific-data"></div>
+                        </form>
+                    </div>
+                 </div>
             </div>
         </div>
 
         <div class="row">
+            <div class="col-md-12">
+                <div id="monitors">
+                    {% for monitor in monitors %}
+                        <div class="monitor-entry">
+                            <strong>{{monitor.label}}</strong>
+                        </div>
+                    {% end %}
+                </div>
+            </div>
 
         </div>
 
     </div>
 
+    <script src="/static/rest_client.js"></script>
+    <script src="/static/monitor_form.js"></script>
     <script src="/static/dashboard.js"></script>
 </body>
 

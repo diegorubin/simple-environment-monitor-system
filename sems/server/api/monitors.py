@@ -6,7 +6,15 @@ from sems.repository.monitor import Monitor
 from sems.monitors import check_alive, get_custom_fields
 
 
-class MonitorsCreate(Base):
+class MonitorsHandler(Base):
+
+    def get(self):
+        monitors = []
+
+        for monitor in Monitor().all():
+            monitors.append(monitor.get_attributes())
+
+        self.success({'monitors': monitors})
 
     def post(self):
 
@@ -17,7 +25,7 @@ class MonitorsCreate(Base):
         self.success({"monitor": monitor.get_attributes()})
 
 
-class MonitorsCheck(Base):
+class MonitorsCheckHandler(Base):
 
     def get(self, label):
         monitor = Monitor()
@@ -27,7 +35,7 @@ class MonitorsCheck(Base):
         self.success({"monitor": monitor.get_attributes(), "alive": alive})
 
 
-class MonitorsFields(Base):
+class MonitorsFieldsHandler(Base):
 
     def get(self, monitor_type):
 
