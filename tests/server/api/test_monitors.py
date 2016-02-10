@@ -44,3 +44,16 @@ class TestMonitors(AsyncHTTPTestCase):
         self.assertEqual(response.code, 200)
         self.assertIn(label, response.body)
 
+    def test_check(self):
+        label = 'test'
+
+        monitor = Monitor(label=label,
+                          url=SERVICE_URL,
+                          monitor_type='TextMonitor',
+                          data={'expected': 'LIVE'})
+        monitor.save()
+
+        response = self.fetch('/api/monitors/%s/check' % label)
+        self.assertEqual(response.code, 200)
+        self.assertIn('false', response.body)
+

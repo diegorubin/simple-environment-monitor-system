@@ -44,7 +44,8 @@
                 <div id="monitors">
                     {% for monitor in monitors %}
                         <div class="monitor-entry">
-                            <strong>{{monitor.label}}</strong>
+                            <strong class="label">{{monitor.label}}</strong>
+                            <span class="url">{{monitor.url}}</span>
                         </div>
                     {% end %}
                 </div>

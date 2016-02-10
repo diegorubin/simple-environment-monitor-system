@@ -31,7 +31,7 @@ class MonitorsCheckHandler(Base):
         monitor = Monitor()
         monitor.load(label)
 
-        alive = check_alive(monitor.monitor_type, monitor.url, monitor.data)
+        alive = check_alive(monitor.monitor_type, monitor.url, **monitor.data)
         self.success({"monitor": monitor.get_attributes(), "alive": alive})
 
 

@@ -15,6 +15,13 @@ var MonitorForm = function() {
             event.preventDefault();
             _this.toggleForm();
         };
+
+        _this.slMonitorType = document.getElementById('monitor-type');
+        _this.slMonitorType.onchange = function(event) {
+            _this.getCustomFields();
+        };
+
+        _this.getCustomFields();
     };
 
     this.save = function() {
@@ -28,6 +35,15 @@ var MonitorForm = function() {
             _this.formWrap.className='hidden';
         }
         _this.hidden = !_this.hidden;
+    };
+
+    this.getCustomFields = function() {
+        var value = _this.slMonitorType.value;
+        console.log(value);
+        var client = new RestClient('/api/monitors/' + value + '/fields' );
+        client.success = function(data) {
+            console.log(data);
+        };
     };
 
 };

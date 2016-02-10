@@ -43,3 +43,11 @@ class TestEvent(unittest.TestCase):
         self.assertEqual(len(event.all()), 1)
         self.assertEqual(event.name, "name2")
 
+    def test_destroy(self):
+        Event(label="TEST", name="name1").save()
+
+        event = Event()
+        event.load("TEST")
+        event.destroy()
+
+        self.assertEqual(len(Event().all()), 0)

@@ -29,6 +29,10 @@ class Base(object):
             self.table.update(attributes, query.label == self.label)
         return True
 
+    def destroy(self):
+        query = Query()
+        self.table.remove(eids=[self.table.search(query.label == self.label)[0].eid])
+
     def get_attributes(self):
         attributes = self.__dict__.copy()
         attributes.pop('db')
