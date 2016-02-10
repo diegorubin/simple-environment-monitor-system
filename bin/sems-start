@@ -1,14 +1,9 @@
 #!/usr/bin/env python
 
 import tornado
-from sems.server.dashboard import Dashboard
-from sems.server.static import Static
+from sems.server import make_app
 
-app = tornado.web.Application([
-    (r"/", Dashboard),
-    (r"/static/([\w_\.-]+)", Static),
-])
-
+app = make_app
 app.listen(8888)
 tornado.ioloop.IOLoop.current().start()
 

@@ -18,16 +18,20 @@ class Base(object):
         self.__dict__.update(self.table.search(query.label == label)[0])
 
     def save(self):
-        attributes = self.__dict__.copy()
-        attributes.pop('db')
-        attributes.pop('table')
-
+        attributes = self.get_attributes()
         if self.__new_record__():
             self.table.insert(attributes)
         else:
             query = Query()
             self.table.update(attributes, query.label == self.label)
         return True
+
+    def get_attributes(self):
+        attributes = self.__dict__.copy()
+        attributes.pop('db')
+        attributes.pop('table')
+
+        return attributes
 
     def __new_record__(self):
         query = Query()

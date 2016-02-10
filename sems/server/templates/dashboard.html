@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Simple Environment Monitor System</title>
+
     <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -13,6 +15,18 @@
 
         <div class="row" id="commands">
             <h1>Simple Environment Monitor System</h1>
+
+            <a href="#" id="new-monitor" class="btn btn-primary">Adicionar</a>
+            <div id="form-wrap-monitor" class="hidden">
+                <form action="/api/monitors" method="post">
+                    <label>Tipo:</label>
+
+                    <label>Url:</label>
+                    <input type="text" name="url"/>
+
+                    <div id="specific-data"></div>
+                </form>
+            </div>
         </div>
 
         <div class="row">
