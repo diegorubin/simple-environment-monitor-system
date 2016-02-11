@@ -8,16 +8,12 @@
     height: 200px;
     margin: 15px;
     padding: 5px;
+    overflow: auto;
 }
 
 .monitor-entry h2 {
     text-decoration: underline;
     font-size: 22px;
-}
-
-.monitor-entry p {
-    white-space:nowrap;
-    overflow:hidden;
 }
 
 .monitor-label {

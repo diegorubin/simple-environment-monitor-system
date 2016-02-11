@@ -22,9 +22,11 @@ class TestTextMonitor(unittest.TestCase):
         monitor = TextMonitor(SERVICE_URL, expected='LIVE');
         self.assertTrue(monitor.alive())
 
+    def test_out(self):
+        monitor = TextMonitor(SERVICE_URL+"/false", expected='LIVE');
+        self.assertFalse(monitor.alive())
+
     def test_check_alive(self):
         self.assertTrue(check_alive('TextMonitor', SERVICE_URL, expected='LIVE'))
 
-if __name__ == '__main__':
-    unittest.main()
 
