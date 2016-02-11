@@ -19,25 +19,32 @@
                 <h1>Simple Environment Monitor System</h1>
 
                  <div id="commands-wrap">
-                    <a href="#" id="new-monitor" class="btn btn-primary">Adicionar Monitor</a>
+                    <a href="#" id="new-monitor" class="btn btn-primary pull-right">Adicionar Monitor</a>
+                    <div class="clear"></div>
                     <div id="form-wrap-monitor" class="hidden">
                         <form id="form-monitor" action="/api/monitors" method="post">
-                            <label>Tipo:</label>
-                            <select name="monitor-type" id="monitor-type">
-                                {% for monitor_type in monitor_types %}
-                                    <option value="{{monitor_type[1]}}">{{monitor_type[0]}}</option>
-                                {% end %}
-                            </select>
+                            <div class="form-group">
+                                <label for="monitor-type">Type:</label>
+                                <select name="monitor-type" id="monitor-type">
+                                    {% for monitor_type in monitor_types %}
+                                        <option value="{{monitor_type[1]}}">{{monitor_type[0]}}</option>
+                                    {% end %}
+                                </select>
+                            </div>
 
-                            <label>Url:</label>
-                            <input type="text" name="url" id="monitor-url"/>
+                            <div class="form-group">
+                                <label for="monitor-label">Label:</label>
+                                <input type="text" name="label" id="monitor-label"/>
+                            </div>
 
-                            <label>Label:</label>
-                            <input type="text" name="label" id="monitor-label"/>
+                            <div class="form-group">
+                                <label for="monitor-url">Url:</label>
+                                <input type="text" name="url" id="monitor-url"/>
+                            </div>
 
-                            <div id="custom-fields"></div>
+                            <div id="custom-fields" class="form-group"></div>
 
-                            <input type="submit" value="Salvar" />
+                            <input type="submit" value="Save" />
                         </form>
                     </div>
                  </div>
