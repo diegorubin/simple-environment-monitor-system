@@ -4,10 +4,17 @@ var MonitorForm = function() {
 
     this.init = function() {
         _this.form = document.getElementById('form-monitor');
+
         _this.form.onsubmit = function(event) {
             event.preventDefault();
-            _this.save();
+            if(_this.lblMonitor.value) {
+                _this.save();
+            } else {
+                alert('Label is empty');
+            }
         };
+
+        _this.lblMonitor = document.getElementById('monitor-label');
 
         _this.formWrap = document.getElementById('form-wrap-monitor');
 
@@ -31,7 +38,7 @@ var MonitorForm = function() {
         var data = {};
         data.url = document.getElementById('monitor-url').value;
         data.monitor_type = _this.slMonitorType.value;
-        data.label = document.getElementById('monitor-label').value;
+        data.label = _this.lblMonitor.value;
         data.data = {};
 
         var customFields = _this.dvCustomFields.getElementsByTagName('input');

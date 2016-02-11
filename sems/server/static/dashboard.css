@@ -8,13 +8,20 @@
 
 .monitor-entry {
     float:left;
-    min-width: 350px;
+    width: 200px;
+    height: 200px;
     margin: 15px;
     padding: 5px;
 }
 
 .monitor-entry h2 {
     text-decoration: underline;
+    font-size: 22px;
+}
+
+.monitor-entry p {
+    white-space:nowrap;
+    overflow:hidden;
 }
 
 .monitor-label {

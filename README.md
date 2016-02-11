@@ -7,4 +7,4 @@
 
     sudo sems-start
 
-Access in http://localhost:8888
+Access in `http://localhost:8888`
