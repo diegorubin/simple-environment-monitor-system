@@ -15,7 +15,7 @@ setup(
         "tornado_json",
         "tinydb"
     ],
-    classifiers=["'Development Status :: 3 - Alpha'"],
+    classifiers=["Development Status :: 3 - Alpha"],
     packages=find_packages()
 )
 
