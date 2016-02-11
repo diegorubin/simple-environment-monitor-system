@@ -49,7 +49,7 @@
                 <div id="monitors">
                     {% for monitor in monitors %}
                         <div class="monitor-entry">
-                            <h2 class="monitor-label">{{monitor.label}}</h2>
+                            <h2><a class="monitor-label" href="{{monitor.url}}" target="_blank">{{monitor.label}}</a></h2>
                             <p>
                                 <span class="monitor-url">{{monitor.url}}</span>
                             </p>

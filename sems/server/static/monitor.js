@@ -11,6 +11,17 @@ var Monitor = function() {
             element.className = (response.data.alive ? 'monitor-entry live' : 'monitor-entry out');
         };
 
+        _this.lnkRemove = element.getElementsByClassName("monitor-remove")[0];
+        _this.lnkRemove.onclick = function(event) {
+            event.preventDefault();
+
+            var client = new RestClient('/api/monitors/' + _this.label);
+            client.success = function() {
+                window.location.reload();
+            };
+            client.call('DELETE');
+        };
+
         if(_this.label && _this.label != '') _this.check();
     };
 

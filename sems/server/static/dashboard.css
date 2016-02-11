@@ -13,11 +13,32 @@
     padding: 5px;
 }
 
+.monitor-entry h2 {
+    text-decoration: underline;
+}
+
+.monitor-label {
+    color: black;
+}
+
+.monitor-label:hover {
+    color: black;
+}
+
 .live {
     background-color: green;
 }
 
 .out {
     background-color: red;
+}
+
+.monitor-remove {
+    text-decoration: none;
+    color: black;
+}
+
+.monitor-remove:hover {
+    color: black;
 }
 
