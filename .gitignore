@@ -4,3 +4,5 @@ build
 dist
 sems.egg-info
 
+*.pyc
+
