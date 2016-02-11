@@ -2,6 +2,6 @@
 
 sudo pip uninstall sems
 python setup.py  sdist
-sudo pip install dist/sems-0.0.2.tar.gz
+sudo pip install dist/sems-0.0.3.tar.gz
 sems-start
 
