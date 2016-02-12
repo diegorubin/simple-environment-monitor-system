@@ -6,3 +6,4 @@ sems.egg-info
 
 *.pyc
 
+*db.json
