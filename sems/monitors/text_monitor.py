@@ -1,5 +1,9 @@
-import urllib2
-from base import Base
+try:
+    from urllib import error
+except ImportError:
+    import urllib2 as error
+
+from sems.monitors.base import Base
 
 
 class TextMonitor(Base):
@@ -7,9 +11,9 @@ class TextMonitor(Base):
     def alive(self):
 
         try:
-            content = self.get_content()
+            content = self.get_content().decode('utf-8')
             return self.data['expected'] in content
-        except urllib2.HTTPError:
+        except error.HTTPError:
             return False
-        except urllib2.URLError:
+        except error.URLError:
             return False

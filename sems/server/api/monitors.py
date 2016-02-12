@@ -1,4 +1,4 @@
-from base import Base
+from sems.server.api.base import Base
 
 from tornado.escape import json_decode
 

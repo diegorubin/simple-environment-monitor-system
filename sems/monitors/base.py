@@ -1,5 +1,9 @@
 from abc import abstractmethod
-import urllib2
+
+try:
+    from urllib import request
+except ImportError:
+    import urllib2 as request
 
 
 class Base(object):
@@ -13,7 +17,7 @@ class Base(object):
         pass
 
     def get_url_response(self):
-        return urllib2.urlopen(self.entrypoint)
+        return request.urlopen(self.entrypoint)
 
     def get_content(self):
         return self.get_url_response().read()

@@ -1,9 +1,13 @@
 import sys
-import urllib2
 
-from text_monitor import TextMonitor
-from http_status_monitor import HTTPStatusMonitor
-from socket_port_monitor import SocketPortMonitor
+try:
+    from urllib import error
+except ImportError:
+    import urllib2 as error
+
+from sems.monitors.text_monitor import TextMonitor
+from sems.monitors.http_status_monitor import HTTPStatusMonitor
+from sems.monitors.socket_port_monitor import SocketPortMonitor
 
 CUSTOM_FIELDS = {
     r'TextMonitor': {
@@ -24,7 +28,7 @@ def check_alive(monitor_type, url, **data):
 
     try:
         return monitor.alive()
-    except urllib2.URLError, e:
+    except error.URLError:
         return False
 
 

@@ -1,6 +1,6 @@
 import telnetlib
 
-from base import Base
+from sems.monitors.base import Base
 
 
 class SocketPortMonitor(Base):

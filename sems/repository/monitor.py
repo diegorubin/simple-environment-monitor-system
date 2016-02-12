@@ -1,4 +1,4 @@
-from base import Base
+from sems.repository.base import Base
 
 
 class Monitor(Base):
