@@ -3,6 +3,7 @@ import urllib2
 
 from text_monitor import TextMonitor
 from http_status_monitor import HTTPStatusMonitor
+from socket_port_monitor import SocketPortMonitor
 
 CUSTOM_FIELDS = {
     r'TextMonitor': {
@@ -10,6 +11,9 @@ CUSTOM_FIELDS = {
     },
     r'HTTPStatusMonitor': {
         'code': {'type': 'text'}
+    },
+    r'SocketPortMonitor': {
+        'port': {'type': 'text'}
     }
 }
 
@@ -24,6 +28,6 @@ def check_alive(monitor_type, url, **data):
         return False
 
 
-
 def get_custom_fields(monitor_type):
     return CUSTOM_FIELDS[monitor_type]
+

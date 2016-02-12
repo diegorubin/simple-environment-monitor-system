@@ -7,14 +7,16 @@ var MonitorForm = function() {
 
         _this.form.onsubmit = function(event) {
             event.preventDefault();
-            if(_this.lblMonitor.value) {
+            if(_this.lblMonitor.value && _this.lblMonitor.value.trim() != "" &&
+               _this.urlMonitor.value && _this.urlMonitor.value.trim() != "") {
                 _this.save();
             } else {
-                alert('Label is empty');
+                alert('Label and url should not be blank');
             }
         };
 
         _this.lblMonitor = document.getElementById('monitor-label');
+        _this.urlMonitor = document.getElementById('monitor-url');
 
         _this.formWrap = document.getElementById('form-wrap-monitor');
 
@@ -36,8 +38,8 @@ var MonitorForm = function() {
 
     this.save = function() {
         var data = {};
-        data.url = document.getElementById('monitor-url').value;
-        data.monitor_type = _this.slMonitorType.value;
+        data.url = _this.urlMonitor.value.trim();
+        data.monitor_type = _this.slMonitorType.value.trim();
         data.label = _this.lblMonitor.value;
         data.data = {};
 

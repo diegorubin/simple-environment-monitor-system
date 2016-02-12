@@ -10,8 +10,9 @@ class Dashboard(tornado.web.RequestHandler):
     def get(self):
         monitor_types = [
             ('Selecione...', ''),
-            ('Checar Conteúdo', 'TextMonitor'),
-            ('Checar Status HTTP', 'HTTPStatusMonitor')
+            ('Check HTTP Response Content', 'TextMonitor'),
+            ('Check Status HTTP', 'HTTPStatusMonitor'),
+            ('Check Socket Port', 'SocketPortMonitor')
         ]
         monitors = Monitor().all()
         self.render("dashboard.html", monitor_types=monitor_types, monitors=monitors)
