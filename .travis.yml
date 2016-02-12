@@ -1,0 +1,19 @@
+language: python
+
+python:
+    - "2.7"
+
+services:
+    - redis-server
+
+install:
+    - pip install tornado
+    - pip install tornado_json
+    - pip install tinydb
+    - pip install coveralls
+
+script: coverage run tests/execution.py
+
+after_success:
+    coveralls
+
