@@ -12,7 +12,7 @@ install:
     - pip install tinydb
     - pip install coveralls
 
-script: coverage run tests/execution.py
+script: coverage run tests/execute.py
 
 after_success:
     coveralls
