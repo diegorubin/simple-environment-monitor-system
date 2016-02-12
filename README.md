@@ -8,3 +8,5 @@
     sudo sems-start
 
 Access in `http://localhost:8888`
+
+![Sems](http://diegorubin.com/images/sems)

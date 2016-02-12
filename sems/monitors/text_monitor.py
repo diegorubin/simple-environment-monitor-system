@@ -8,7 +8,7 @@ class TextMonitor(Base):
 
         try:
             content = self.get_content()
-            return content == self.data['expected']
+            return self.data['expected'] in content
         except urllib2.HTTPError:
             return False
         except urllib2.URLError:
