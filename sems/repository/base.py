@@ -1,6 +1,5 @@
 from tinydb import TinyDB, Query
-
-TINY_DB_PATH = "/var/db/sems/db.json"
+from sems.settings import TINY_DB_PATH
 
 
 class Base(object):
@@ -43,4 +42,3 @@ class Base(object):
     def __new_record__(self):
         query = Query()
         return len(self.table.search(query.label == self.label)) == 0
-
