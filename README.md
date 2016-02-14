@@ -1,13 +1,31 @@
 #Simple Environment Monitor System
 [![Build Status](https://travis-ci.org/diegorubin/simple-environment-monitor-system.svg)](https://travis-ci.org/diegorubin/simple-environment-monitor-system) 
 
-##Install And Run
+## Installation
+
+Directly from [PyPI](http://pypi.python.org/pypi/sems):
 
     pip install sems
-    sudo mkdir /var/db/sems
 
-    sudo sems-start
+Using pip but from source
 
-Access in `http://localhost:8888`
+    pip install git+https://github.com/diegorubin/simple-environment-monitor-system.git@master
+
+or clone from the source (for the brave):
+
+    git clone https://github.com/diegorubin/simple-environment-monitor-system.git
+    cd simple-environment-monitor-system
+    python setup.py install
+
+## Usage
+
+For installation using pip (PyPI or source)
+
+    sems-start 
+
+For installation from the source, go to the source project path and run
+
+    python main.py
 
 ![Sems](http://diegorubin.com/images/sems)
+
