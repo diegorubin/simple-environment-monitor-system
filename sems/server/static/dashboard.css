@@ -1,3 +1,20 @@
+body{
+    background: #1f1f1f;
+}
+
+h1{
+    color: #F5F5F5;
+    text-align: center;
+}
+
+#form-wrap-monitor{
+    background: #fff;
+    width: 300px;
+    padding: 20px;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
 #container {
     margin: 15px;
 }
@@ -5,19 +22,38 @@
 .monitor-entry {
     float:left;
     width: 200px;
-    height: 200px;
+    height: 160px;
     margin: 15px;
     padding: 5px;
     overflow: auto;
+    background: #F5F5F5;
+    border-radius: 4px;
+    color: #010201;
+    position: relative;
 }
 
 .monitor-entry h2 {
-    text-decoration: underline;
+    font-size: 18px;
+    margin: 2px 0;
+}
+
+.monitor-entry hr {
+    margin: 2px 0;
+    border: 1px solid #151515;
+    border-style: dashed;
+}
+
+.monitor-status{
     font-size: 22px;
+    color: #265e26;
+}
+
+.out .monitor-status{
+    color: #B51D1D;
 }
 
 .monitor-label {
-    color: black;
+    color: #010201;
 }
 
 .monitor-label:hover {
@@ -25,19 +61,25 @@
 }
 
 .live {
-    background-color: green;
+    background-color: #2eb22e;
 }
 
 .out {
-    background-color: red;
+    background-color: #E94242;
 }
 
 .monitor-remove {
     text-decoration: none;
     color: black;
+    bottom: 8px;
+    position: absolute;
+    right: 8px;
 }
 
 .monitor-remove:hover {
     color: black;
 }
 
+#form-monitor .clear{
+    clear:both;
+}

@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="{{ static_url("bootstrap.css") }}" type="text/css" />
     <link rel="stylesheet" href="{{ static_url("bootstrap-theme.css") }}" type="text/css" />
-    <link rel="stylesheet" href="{{ static_url("dashboard.css") }}" type="text/css"a />
+    <link rel="stylesheet" href="{{ static_url("dashboard.css") }}" type="text/css" />
 </head>
 
 <body>
@@ -21,11 +21,11 @@
                  <div id="commands-wrap">
                     <a href="#" id="new-monitor" class="btn btn-primary pull-right">Add New Monitor</a>
                     <div class="clear"></div>
-                    <div id="form-wrap-monitor" class="hidden">
+                    <div id="form-wrap-monitor" class="wrap-monitor" class="hidden">
                         <form id="form-monitor" action="/api/monitors" method="post">
                             <div class="form-group">
                                 <label for="monitor-type">Type:</label>
-                                <select name="monitor-type" id="monitor-type">
+                                <select name="monitor-type" id="monitor-type" class="form-control">
                                     {% for monitor_type in monitor_types %}
                                         <option value="{{monitor_type[1]}}">{{monitor_type[0]}}</option>
                                     {% end %}
@@ -34,17 +34,18 @@
 
                             <div class="form-group">
                                 <label for="monitor-label">Label:</label>
-                                <input type="text" name="label" id="monitor-label"/>
+                                <input type="text" name="label" id="monitor-label" class="form-control" />
                             </div>
 
                             <div class="form-group">
                                 <label for="monitor-url">Url or Host:</label>
-                                <input type="text" name="url" id="monitor-url"/>
+                                <input type="text" name="url" id="monitor-url" class="form-control" />
                             </div>
 
                             <div id="custom-fields" class="form-group"></div>
 
-                            <input type="submit" value="Save" />
+                            <input type="submit" value="Save" class="btn btn-primary pull-right" />
+                            <div class="clear"></div>
                         </form>
                     </div>
                  </div>
@@ -55,17 +56,18 @@
             <div class="col-md-12">
                 <div id="monitors">
                     {% for monitor in monitors %}
-                        <div class="monitor-entry">
-                            <h2><a class="monitor-label" href="{{monitor.url}}" target="_blank">{{monitor.label}}</a></h2>
+                        <div class="monitor-entry alert alert-success">
+                            <h2>
+                                <a class="monitor-label" href="{{monitor.url}}" target="_blank">{{monitor.label}}</a>
+                            </h2>
+                            <hr />
                             <p>
                                 <span class="monitor-url">{{monitor.url}}</span>
                             </p>
                             <p>
                                 <span class="monitor-status"></span>
                             </p>
-                            <p>
-                                <a href="#" class="monitor-remove">remover</a>
-                            </p>
+                            <a href="#" class="monitor-remove btn btn-xs btn-danger pull-right">remover</a>
                         </div>
                     {% end %}
                 </div>
