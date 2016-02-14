@@ -16,7 +16,6 @@ class TestMonitors(AsyncHTTPTestCase):
             os.remove(sems.repository.base.TINY_DB_PATH)
 
     def get_app(self):
-        sems.repository.base.TINY_DB_PATH = "/tmp/tinydbtest.json"
         return make_app()
 
     def test_custom_fields(self):
