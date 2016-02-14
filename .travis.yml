@@ -4,7 +4,7 @@ python:
   - "3.4"
 
 install:
-  - pip install tornado
+  - pip install -r requirements.txt
   - pip install python-coveralls
   - pip install coverage
   - pip install httpretty
