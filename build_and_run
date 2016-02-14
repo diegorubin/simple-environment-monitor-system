@@ -2,6 +2,6 @@
 
 sudo pip3 uninstall sems
 python3 setup.py  sdist
-sudo pip3 install dist/sems-0.0.7.tar.gz
+sudo pip3 install dist/sems-0.0.8.tar.gz
 sems-start
 
