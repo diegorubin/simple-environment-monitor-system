@@ -26,6 +26,16 @@ For installation using pip (PyPI or source)
 For installation from the source, go to the source project path and run
 
     python main.py
+    
+## Settings
+
+To change settings use variables of environments.
+The settings avaibles are:
+
+| Variable Name    | Description                              | Default Value            |
+| ---------------- | ---------------------------------------- | ------------------------ |
+| SEMS_DATABASE    | Complete path to file used like database | \<current_path\>/db.json |
+| SEMS_SERVER_PORT | Port number where the server responds    | 8888                     |
 
 ![Sems](http://diegorubin.com/images/sems)
 

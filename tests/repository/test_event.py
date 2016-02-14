@@ -7,9 +7,6 @@ from sems.repository.event import Event
 
 class TestEvent(unittest.TestCase):
 
-    def setUp(self):
-        sems.repository.base.TINY_DB_PATH = "/tmp/tinydbtest.json"
-
     def tearDown(self):
         os.remove(sems.repository.base.TINY_DB_PATH)
 
