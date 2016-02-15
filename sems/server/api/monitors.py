@@ -25,6 +25,20 @@ class MonitorsHandler(Base):
         self.success({"monitor": monitor.get_attributes()})
 
 
+class MonitorsPositionsHandler(Base):
+
+    def post(self):
+        json_request = json_decode(self.request.body)
+
+        for index, label in enumerate(json_request['monitors']):
+            monitor = Monitor()
+            monitor.load(label)
+            monitor.position = index
+            monitor.save()
+
+        self.success(json_request)
+
+
 class MonitorsDestroyHandler(Base):
 
     def delete(self, label):

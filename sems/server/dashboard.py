@@ -14,7 +14,7 @@ class Dashboard(tornado.web.RequestHandler):
             ('Check Status HTTP', 'HTTPStatusMonitor'),
             ('Check Socket Port', 'SocketPortMonitor')
         ]
-        monitors = Monitor().all()
+        monitors = Monitor().ordered_by_position()
         self.render("dashboard.html", monitor_types=monitor_types, monitors=monitors)
 
 

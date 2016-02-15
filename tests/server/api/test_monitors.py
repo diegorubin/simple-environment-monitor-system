@@ -56,3 +56,30 @@ class TestMonitors(AsyncHTTPTestCase):
         self.assertEqual(response.code, 200)
         self.assertIn('false', response.body)
 
+    def test_positions_save(self):
+        monitor_position1 = Monitor(label='position1',
+                                   url=SERVICE_URL,
+                                   monitor_type='TextMonitor',
+                                   data={'expected': 'LIVE'})
+        monitor_position1.save()
+
+        monitor_position0 = Monitor(label='position0',
+                                   url=SERVICE_URL,
+                                   monitor_type='TextMonitor',
+                                   data={'expected': 'LIVE'})
+        monitor_position0.save()
+
+        body = json_encode({
+            'monitors': ['position0', 'position1']
+        })
+
+        self.fetch('/api/monitors/positions', method='POST', body=body)
+        monitor = Monitor()
+        monitor.load('position1')
+        self.assertEqual(monitor.get_position(), 1)
+
+        monitor = Monitor()
+        monitor.load('position0')
+        self.assertEqual(monitor.get_position(), 0)
+
+
