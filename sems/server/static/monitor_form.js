@@ -79,6 +79,7 @@ var MonitorForm = function() {
                     span.innerHTML = field;
 
                     var input = document.createElement('input');
+                    input.className = "form-control";
                     input.type = data.fields[field].type;
                     input.name = field;
 
