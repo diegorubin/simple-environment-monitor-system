@@ -1,7 +1,9 @@
 #!/bin/bash
 
+export SEMS_DATABASE=/var/db/sems/db.json
+
 sudo pip3 uninstall sems
 python3 setup.py  sdist
-sudo pip3 install dist/sems-0.0.8.tar.gz
+sudo pip3 install dist/sems-0.0.9.tar.gz
 sems-start
 
