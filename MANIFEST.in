@@ -1,2 +1,3 @@
 include sems/server/templates/*
 include sems/server/static/*
+include README.md

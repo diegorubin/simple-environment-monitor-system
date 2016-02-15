@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="sems",
-    version="0.0.9",
+    version="0.0.10",
     url="http://github.com/diegorubin/simple-environment-monitor-system",
     author="Diego Rubin",
     author_email="rubin.diego@gmail.com",
