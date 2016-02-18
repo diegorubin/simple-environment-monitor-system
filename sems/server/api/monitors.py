@@ -18,6 +18,7 @@ class MonitorsHandler(Base):
 
     def post(self):
 
+        print self.request.body
         json_request = json_decode(self.request.body)
         monitor = Monitor(**json_request)
         monitor.save()
