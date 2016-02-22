@@ -44,5 +44,6 @@
             container.className = "group-wrapper";
         }
     });
+    document.getElementById('groups-wrap').getElementsByTagName('A')[0].click();
 
 })();
