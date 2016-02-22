@@ -1,4 +1,5 @@
-import sems, os
+import sems
+import os
 
 from sems.server import make_app
 from sems.repository.monitor import Monitor
