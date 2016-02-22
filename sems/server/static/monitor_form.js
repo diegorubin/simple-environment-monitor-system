@@ -41,6 +41,7 @@ var MonitorForm = function() {
         data.url = _this.urlMonitor.value.trim();
         data.monitor_type = _this.slMonitorType.value.trim();
         data.label = _this.lblMonitor.value;
+        data.group = document.getElementById('monitor-group').value.trim();
         data.data = {};
 
         var customFields = _this.dvCustomFields.getElementsByTagName('input');

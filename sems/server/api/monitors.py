@@ -4,7 +4,7 @@ from tornado.escape import json_decode
 
 from sems.repository.monitor import Monitor
 from sems.monitors import check_alive, get_custom_fields
-
+from sems.logger import application
 
 class MonitorsHandler(Base):
 
@@ -18,7 +18,7 @@ class MonitorsHandler(Base):
 
     def post(self):
 
-        print self.request.body
+        application.info("creating monitor with attributes %s" % self.request.body)
         json_request = json_decode(self.request.body)
         monitor = Monitor(**json_request)
         monitor.save()
@@ -45,6 +45,8 @@ class MonitorsDestroyHandler(Base):
     def delete(self, label):
         monitor = Monitor()
         monitor.load(label)
+
+        application.info("removing monitor %s" % label)
 
         self.success({"monitor": monitor.get_attributes(), "destroy": monitor.destroy()})
 

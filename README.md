@@ -1,4 +1,5 @@
 #Simple Environment Monitor System
+[![PyPI version](https://badge.fury.io/py/sems.svg)](https://badge.fury.io/py/sems)
 [![Build Status](https://travis-ci.org/diegorubin/simple-environment-monitor-system.svg)](https://travis-ci.org/diegorubin/simple-environment-monitor-system) 
 
 ## Installation

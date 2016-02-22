@@ -23,4 +23,26 @@
         }
     });
 
+    /* init group menu */
+    document.getElementById('groups-wrap').addEventListener('click', function(event){
+        event.preventDefault();
+        if(event.target.tagName === 'A') {
+            var groups = document.getElementById('groups-wrap').getElementsByTagName('LI');
+            for(var group in groups) {
+                groups[group].className = '';
+            }
+
+            var containers = document.getElementsByClassName("group-wrapper");
+            for(var container in containers) {
+                containers[container].className = "group-wrapper hidden";
+            }
+
+            event.target.parentElement.className = "active";
+
+            var group = event.target.dataset.group;
+            var container = document.querySelectorAll("[data-container-group='" + group + "']")[0];
+            container.className = "group-wrapper";
+        }
+    });
+
 })();

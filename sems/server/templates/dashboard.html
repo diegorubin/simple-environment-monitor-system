@@ -66,13 +66,15 @@
                         {% end %}
 
                         {% for group in groups %}
-                            <li><a href="#" data-group="{{group}}">{{group}}</a></li>
+                            {% if group %}
+                                <li><a href="#" data-group="{{group}}">{{group}}</a></li>
+                            {% end %}
                         {% end %}
                     </ul>
                 </div>
                 <div id="monitors">
                     {% for group in groups_monitors %}
-                        <div class="group-wrapper" id="{{group}}">
+                        <div class="group-wrapper hidden" data-container-group="{{group}}">
                             {% for monitor in groups_monitors[group] %}
                                 <div class="monitor-entry alert alert-success">
                                     <h2>

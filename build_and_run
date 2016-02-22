@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export SEMS_DATABASE=/var/db/sems/db.json
+export SEMS_DEBUG=False
 
 sudo pip uninstall sems
 python setup.py  sdist

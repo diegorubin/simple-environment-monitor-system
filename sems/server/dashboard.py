@@ -27,7 +27,7 @@ class Dashboard(tornado.web.RequestHandler):
                 monitors[group] = []
             monitors[group].append(monitor)
 
-        groups = [monitor.group for monitor in monitors if hasattr(monitor, 'group')]
+        groups = set([monitor for monitor in monitors])
 
         self.render("dashboard.html", monitor_types=monitor_types, groups_monitors=monitors, groups=groups)
 
