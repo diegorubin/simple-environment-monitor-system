@@ -11,17 +11,20 @@
 
     /* init drangNdrop */
     var client = new RestClient('/api/monitors/positions');
-    var monitorsList = document.getElementById('monitors');
-    Sortable.create(monitorsList,{
-        onUpdate: function(event) {
-            var items = document.getElementsByClassName('monitor-label');
-            var request = [];
-            for(var item = 0; item < items.length; item++) {
-                request.push(items[item].innerHTML);
+
+    var groups = document.getElementsByClassName('group-wrapper');
+    for (var i = 0; i < groups.length; i++) {
+        Sortable.create(groups[i],{
+            onUpdate: function(event) {
+                var items = document.getElementsByClassName('monitor-label');
+                var request = [];
+                for(var item = 0; item < items.length; item++) {
+                    request.push(items[item].innerHTML);
+                }
+                client.call('POST', {monitors: request})
             }
-            client.call('POST', {monitors: request})
-        }
-    });
+        });
+    }
 
     /* init group menu */
     document.getElementById('groups-wrap').addEventListener('click', function(event){
