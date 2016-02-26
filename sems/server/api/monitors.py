@@ -3,8 +3,9 @@ from sems.server.api.base import Base
 from tornado.escape import json_decode
 
 from sems.repository.monitor import Monitor
-from sems.monitors import check_alive, get_custom_fields
+from sems.monitors.helpers import check_alive, get_custom_fields
 from sems.logger import application
+
 
 class MonitorsHandler(Base):
 

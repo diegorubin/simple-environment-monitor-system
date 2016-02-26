@@ -2,7 +2,7 @@ import unittest
 import httpretty
 
 from sems.monitors.text_monitor import TextMonitor
-from sems.monitors import check_alive
+from sems.monitors.helpers import check_alive
 
 
 SERVICE_URL = "http://localhost:8888/healthcheck"

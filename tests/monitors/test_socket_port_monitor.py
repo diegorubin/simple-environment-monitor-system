@@ -2,7 +2,7 @@ import unittest
 import httpretty
 
 from sems.monitors.socket_port_monitor import SocketPortMonitor
-from sems.monitors import check_alive
+from sems.monitors.helpers import check_alive
 
 
 SERVICE_HOST = "localhost"

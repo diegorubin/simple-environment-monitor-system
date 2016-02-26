@@ -2,6 +2,7 @@
 
 import tornado.web
 
+from sems.monitors import monitors as list_monitors
 from sems.repository.monitor import Monitor
 
 
@@ -10,11 +11,12 @@ class Dashboard(tornado.web.RequestHandler):
     def get(self):
 
         monitor_types = [
-            ('Select...', ''),
-            ('Check HTTP Response Content', 'TextMonitor'),
-            ('Check Status HTTP', 'HTTPStatusMonitor'),
-            ('Check Socket Port', 'SocketPortMonitor')
+            ('Select...', '')
         ]
+
+        for monitor in list_monitors:
+            item = (monitor, list_monitors[monitor]['description'])
+            monitor_types.append(item)
 
         monitors = {}
         for monitor in Monitor().ordered_by_position():

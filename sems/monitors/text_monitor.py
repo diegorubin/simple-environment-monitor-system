@@ -3,9 +3,13 @@ try:
 except ImportError:
     import urllib2 as error
 
+from sems.monitors import Monitor
 from sems.monitors.base import Base
 
 
+@Monitor('Check HTTP Response Content', {
+    'expected': {'type': 'text'}
+})
 class TextMonitor(Base):
 
     def alive(self):
