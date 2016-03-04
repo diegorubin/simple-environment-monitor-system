@@ -83,3 +83,7 @@ h1{
 #form-monitor .clear{
     clear:both;
 }
+
+#version {
+    color: white;
+}

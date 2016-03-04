@@ -1,8 +1,9 @@
 from setuptools import setup, find_packages
+from sems import VERSION
 
 setup(
     name="sems",
-    version="0.0.13",
+    version=VERSION,
     url="http://github.com/diegorubin/simple-environment-monitor-system",
     author="Diego Rubin",
     author_email="rubin.diego@gmail.com",

@@ -25,4 +25,5 @@ def check_alive(monitor_type, url, **data):
 
 
 def get_custom_fields(monitor_type):
-    return monitors[monitor_type]
+    return monitors[monitor_type]['fields']
+

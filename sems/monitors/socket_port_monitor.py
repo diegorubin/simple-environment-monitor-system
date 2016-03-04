@@ -4,9 +4,7 @@ from sems.monitors import Monitor
 from sems.monitors.base import Base
 
 
-@Monitor('Check Socket Port', {
-    'port': {'type': 'text'}
-})
+@Monitor('Check Socket Port', {'port': {'type': 'text'}})
 class SocketPortMonitor(Base):
 
     def alive(self):

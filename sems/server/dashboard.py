@@ -5,6 +5,8 @@ import tornado.web
 from sems.monitors import monitors as list_monitors
 from sems.repository.monitor import Monitor
 
+from sems import VERSION
+
 
 class Dashboard(tornado.web.RequestHandler):
 
@@ -15,7 +17,7 @@ class Dashboard(tornado.web.RequestHandler):
         ]
 
         for monitor in list_monitors:
-            item = (monitor, list_monitors[monitor]['description'])
+            item = (list_monitors[monitor]['description'], monitor)
             monitor_types.append(item)
 
         monitors = {}
@@ -31,6 +33,7 @@ class Dashboard(tornado.web.RequestHandler):
 
         groups = set([monitor for monitor in monitors])
 
-        self.render("dashboard.html", monitor_types=monitor_types, groups_monitors=monitors, groups=groups)
+        self.render("dashboard.html", monitor_types=monitor_types, groups_monitors=monitors, groups=groups,
+                    version=VERSION)
 
 
