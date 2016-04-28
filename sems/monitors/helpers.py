@@ -1,4 +1,5 @@
 import sys
+import os
 
 try:
     from urllib import error
@@ -8,6 +9,12 @@ except ImportError:
 from sems.monitors import *
 from sems.utils import camel_to_snake_case
 
+def load_monitors():
+    for f in os.listdir(os.path.join(os.path.dirname(__file__))):
+        if(f.endswith("_monitor.py")):
+            module = "sems.monitors.%s" % (camel_to_snake_case(f.replace('.py', '')))
+            if module not in sys.modules:
+                __import__(module)
 
 def check_alive(monitor_type, url, **data):
     module = "sems.monitors.%s" % (camel_to_snake_case(monitor_type))

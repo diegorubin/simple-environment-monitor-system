@@ -4,6 +4,8 @@ import os
 from sems import logger
 from sems.logger import general
 
+from sems.monitors.helpers import load_monitors
+from sems.monitors import monitors as list_monitors
 from sems.server.api.monitors import *
 from sems.server.dashboard import Dashboard
 from sems.server.static import Static
@@ -35,6 +37,10 @@ def start():
 
     app = make_app()
     app.listen(SERVER_PORT)
+
+    load_monitors()
+    for monitor in list_monitors:
+        general.info("loading monitor type: " + monitor)
 
     general.info("starting server")
 
