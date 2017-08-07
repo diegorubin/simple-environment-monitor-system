@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  sems:
+    build: .
+    image: sems/monitor:v1
+    ports:
+      - 8888:8888
