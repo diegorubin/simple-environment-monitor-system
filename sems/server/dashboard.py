@@ -4,6 +4,7 @@ import tornado.web
 
 from sems.monitors import monitors as list_monitors
 from sems.repository.monitor import Monitor
+from sems.settings import WEB_POLLING_INTERVAL
 
 from sems import VERSION
 
@@ -33,7 +34,9 @@ class Dashboard(tornado.web.RequestHandler):
 
         groups = set([monitor for monitor in monitors])
 
-        self.render("dashboard.html", monitor_types=monitor_types, groups_monitors=monitors, groups=groups,
+        self.render("dashboard.html",
+                    monitor_types=monitor_types,
+                    groups_monitors=monitors,
+                    groups=groups,
+                    polling_interval=WEB_POLLING_INTERVAL,
                     version=VERSION)
-
-

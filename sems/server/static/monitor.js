@@ -2,6 +2,12 @@ var Monitor = function() {
     var _this = this;
 
     this.init = function(element) {
+
+        _this.interval = 60000;
+        var interval = document.getElementsByClassName('polling-interval')[0];
+        if (interval) {
+            _this.interval = interval.getAttribute('content');
+        }
         _this.label = element.getElementsByClassName("monitor-label")[0].innerHTML;
         _this.status = element.getElementsByClassName("monitor-status")[0];
 
@@ -27,6 +33,6 @@ var Monitor = function() {
 
     this.check = function() {
         _this.client.call("GET");
-        setTimeout(function(){_this.check()}, 60000);
+        setTimeout(function(){_this.check()}, _this.interval);
     };
 };
