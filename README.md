@@ -35,14 +35,14 @@ For installation from the source, go to the source project path and run
 To change settings use variables of environments.
 The settings avaibles are:
 
-| Variable Name               | Description                                                                      | Default Value            |
-| ----------------            | -------------------------------------------------------------------------------- | ------------------------ |
-| SEMS_DATABASE               | Complete path to file used like database.                                        | \<current_path\>/db.json |
-| SEMS_SERVER_PORT            | Port number where the server responds.                                           | 8888                     |
-| SEMS_LOG_LEVEL              | Log Level for application. Avaliable values are INFO, DEBUG, ERROR or CRITICAL.  | INFO                     |
-| SEMS_LOG_PATH               | Path to log files.                                                               | \<current_path\>/log     |
-| SEMS_DEBUG                  | Run tornado application in debug mode. To enable uses True as value.             | False                    |
-| SEMS_WEB_POLLING_INTERVAL _ | Monitor polling interval. Default value is one minute.                           | 60000                    |
+| Variable Name             | Description                                                                      | Default Value            |
+| ----------------          | -------------------------------------------------------------------------------- | ------------------------ |
+| SEMS_DATABASE             | Complete path to file used like database.                                        | \<current_path\>/db.json |
+| SEMS_SERVER_PORT          | Port number where the server responds.                                           | 8888                     |
+| SEMS_LOG_LEVEL            | Log Level for application. Avaliable values are INFO, DEBUG, ERROR or CRITICAL.  | INFO                     |
+| SEMS_LOG_PATH             | Path to log files.                                                               | \<current_path\>/log     |
+| SEMS_DEBUG                | Run tornado application in debug mode. To enable uses True as value.             | False                    |
+| SEMS_WEB_POLLING_INTERVAL | Monitor polling interval. Default value is one minute.                           | 60000                    |
 
 ![Sems](http://diegorubin.com/images/sems)
 
