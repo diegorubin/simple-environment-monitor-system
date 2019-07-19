@@ -1,0 +1,62 @@
+body {
+    background-color: #f6f8fa;
+}
+
+.summary {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.summary .alert {
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.summary .alert-success {
+    background-color: #28a745;
+}
+
+#monitor-container {
+    margin-top: 30px;
+}
+
+#monitor-container .list-group {
+    margin-bottom: 40px;    
+}
+
+#monitor-container .list-group h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.component-name {
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    font-weight: 700;
+    max-width: 75%;
+    font-size: 1rem;
+}
+
+.component-status {
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.healthy {
+    color: #28a745;
+}
+
+.unhealthy {
+    color: #ff0000;
+}
+
+.component-status i {
+    margin-right: 5px;
+}
