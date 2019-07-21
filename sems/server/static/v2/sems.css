@@ -18,6 +18,10 @@ body {
     background-color: #28a745;
 }
 
+.summary .alert-danger {
+    background-color: #ff0000;
+}
+
 #monitor-container {
     margin-top: 30px;
 }

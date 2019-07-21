@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta content='{{ polling_interval }}' name='polling-interval'>
+    <meta content="{{ polling_interval }}" name="polling-interval">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,37 +28,25 @@
             </form>
         </div>
     </nav>
-    <div class="summary container">
-        <div class="alert alert-success" role="alert">
-            <i class="fa fa-check mr-1"></i>All Systems are Healthy!
+    <div id="summary" class="summary container">
+        <div class="alert alert-success d-none" role="alert">
         </div>
     </div>
-
     <div id="monitor-container" class="container">
-        <div class="list-group" data-group="Barramento">
-            <h3>Barramento</h3>
-            <div class="list-group-item monitor-entry">
-                <div class="d-flex w-100 justify-content-between">
-                    <span class="component-name mb-1">Conta.wsdl</span>
-                    <span class="component-status healthy mb-1"><i class="fa fa-check"></i>Healthy</span>
-                </div>
+        {% for group in groups_monitors %}
+            <div class="list-group" data-group="Barramento">
+                <h3>{{ group }}</h3>
+                {% for monitor in groups_monitors[group] %}
+                    <div class="list-group-item monitor-entry">
+                        <div class="d-flex w-100 justify-content-between">
+                            <span class="component-name mb-1">{{monitor.label}}</span>
+                            <span class="component-status healthy mb-1"></span>
+                        </div>
+                    </div>
+                    <!-- <i class="fa fa-check"></i>Healthy -->
+                {% end %}
             </div>
-            <div class="list-group-item monitor-entry">
-                <div class="d-flex w-100 justify-content-between">
-                    <span class="component-name mb-1">Pagamento.wsdl</span>
-                    <span class="component-status healthy mb-1"><i class="fa fa-check"></i>Healthy</span>
-                </div>
-            </div>
-        </div>
-        <div class="list-group" data-group="API Gateway">
-            <h3>API Gateway</h3>
-            <div class="list-group-item monitor-entry">
-                <div class="d-flex w-100 justify-content-between">
-                    <span class="component-name mb-1">OAM</span>
-                    <span class="component-status healthy mb-1"><i class="fa fa-check"></i>Healthy</span>
-                </div>
-            </div>
-        </div>
+        {% end %}
     </div>
 
     <!-- New Monitor Modal -->

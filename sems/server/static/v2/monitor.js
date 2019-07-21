@@ -1,41 +1,96 @@
-var Monitor = function() {
-    var _this = this;
 
-    this.init = function(element) {
+var checked_monitors = [];
 
-        _this.interval = 60000;
-        var interval = document.getElementsByClassName('polling-interval')[0];
-        if (interval) {
-            _this.interval = interval.getAttribute('content');
+function updateMonitors(pollInterval) {
+    $(".monitor-entry").each(function() {
+        // console.log("Updating monitor ...");
+        updateMonitor(this, pollInterval);
+    });
+}
+
+function updateMonitor(element, pollInterval) {
+    var monitor = $(element);
+    var monitorLabel = monitor.find("span.component-name:first").text();
+
+    // console.log("Monitor " + monitorLabel + " to be updated. Poll interval is pollInterval ...");
+
+    $.get('/api/monitors/' + monitorLabel + '/check', function( response ) {
+        // console.log("Received monitor response for " + monitorLabel + ". Poll interval = " + pollInterval + "Response is = " + response);
+
+        if( response && response.data ) {
+            var status = response.data.alive;
+            var monitorHolder = monitor.find("span.component-status:first");
+
+            if( status === true ) {
+                monitorHolder.removeClass("unhealthy");
+                monitorHolder.addClass("healthy");
+
+                monitorHolder.html(
+                    "<i class='fa fa-check'></i>Healthy"
+                );
+            }
+            else {
+                monitorHolder.removeClass("healthy");
+                monitorHolder.addClass("unhealthy");
+
+                monitorHolder.html(
+                    "<i class='fa fa-times'></i>Unhealthy"
+                );
+            }
         }
-        _this.label = element.getElementsByClassName("component-name")[0].innerHTML;
-        _this.status = element.getElementsByClassName("component-status")[0];
 
-        _this.client = new RestClient('/api/monitors/' + _this.label + '/check');
+        $("#summary").trigger("monitors.monitorUpdated", [ monitorLabel, status ]);
 
-        _this.client.success = function(response) {
-            _this.status.innerHTML = (response.data.alive ? 
-                '<i class="fa fa-check"></i>Healthy' : '<i class="fa fa-times"></i>Unhealthy'
-            );
-            _this.status.classname = (response.data.alive ? 'component-status healthy mb-1' : 'component-status unhealthy mb-1');
-        };
+        setTimeout(function() {
+            updateMonitor(element, pollInterval);
+        }, pollInterval);
+    });
+}
 
-        // _this.lnkRemove = element.getElementsByClassName("monitor-remove")[0];
-        // _this.lnkRemove.onclick = function(event) {
-        //     event.preventDefault();
+function updateEnvStatus(monitor, status) {
+    checked_monitors[monitor] = status;
+    
+    var summary = $("#summary");
+    var alertBox = summary.find("div.alert:first");
 
-        //     var client = new RestClient('/api/monitors/' + _this.label);
-        //     client.success = function() {
-        //         window.location.reload();
-        //     };
-        //     client.call('DELETE');
-        // };
+    var overallStatus = true;
 
-        if(_this.label && _this.label != '') _this.check();
-    };
+    for (let [key, value] of Object.entries(checked_monitors)) {
+        if( value === false ) {
+            overallStatus = false;
+            break;
+        }
+    }
 
-    this.check = function() {
-        _this.client.call("GET");
-        setTimeout(function(){_this.check()}, _this.interval);
-    };
-};
+    alertBox.removeClass("d-none");
+
+    if( overallStatus === true ) {
+        alertBox.removeClass("alert-danger");
+        alertBox.addClass("alert-success");
+
+        alertBox.html("<i class='fa fa-check mr-1'></i>All Systems are Healthy!");
+    }
+    else {
+        alertBox.removeClass("alert-success");
+        alertBox.addClass("alert-danger");
+
+        alertBox.html("<i class='fa fa-times mr-1'></i>Oops! It seems you have some issues to check!");
+    }
+}
+
+(function() {
+
+    let pollInterval = 10000;
+    let metaPollInterval = $("meta[name='polling-interval]:first").attr("content");
+
+    if( metaPollInterval ) {
+        pollInterval = metaPollInterval;
+    }
+
+    $("#summary").on("monitors.monitorUpdated", function(event, monitor, status) {
+        updateEnvStatus(monitor, status);
+    });
+
+    //console.log("Initializing monitors ...");
+    updateMonitors(pollInterval);
+})();
