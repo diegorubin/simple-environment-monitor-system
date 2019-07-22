@@ -91,6 +91,23 @@ function updateEnvStatus(monitor, status) {
         updateEnvStatus(monitor, status);
     });
 
+    $(".immediate-action").on("click", function(event) {
+        var monitorAction = $(this);
+        var monitorLabel = monitorAction.attr("data-monitor");
+
+        console.log("Removing monitor: " + monitorLabel);
+
+        if(monitorLabel) {
+            $.ajax({
+                url: "/api/monitors/" + monitorLabel,
+                type: "DELETE",
+                success: function() {
+                    window.location.reload();
+                }
+            });
+        }
+    });
+
     //console.log("Initializing monitors ...");
     updateMonitors(pollInterval);
 })();

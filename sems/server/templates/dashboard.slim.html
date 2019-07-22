@@ -39,7 +39,10 @@
                 {% for monitor in groups_monitors[group] %}
                     <div class="list-group-item monitor-entry">
                         <div class="d-flex w-100 justify-content-between">
-                            <span class="component-name mb-1">{{monitor.label}}</span>
+                            <div class="component-container">
+                                <span class="component-name mb-1">{{monitor.label}}</span>
+                                <a href="#" class="immediate-action" data-monitor="{{monitor.label}}" data-group="{{group}}">(excluir)</a>
+                            </div>
                             <span class="component-status healthy mb-1"></span>
                         </div>
                     </div>
@@ -128,7 +131,6 @@
     <script src="/static/rest_client.js"></script>
     <script src="/static/v2/monitor.js"></script>
     <script src="/static/v2/monitor_form.js"></script>
-    <script src="/static/v2/dashboard.js"></script>
 </body>
 
 </html>

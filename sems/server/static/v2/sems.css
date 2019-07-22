@@ -53,6 +53,13 @@ body {
     font-size: 0.9rem;
 }
 
+.component-container .immediate-action {
+    margin-left: 2px;
+    font-size: 0.6rem;
+    color: #888;
+    vertical-align: baseline;
+}
+
 .healthy {
     color: #28a745;
 }
