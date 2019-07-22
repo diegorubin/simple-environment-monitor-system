@@ -35,7 +35,11 @@
     <div id="monitor-container" class="container">
         {% for group in groups_monitors %}
             <div class="list-group" data-group="Barramento">
-                <h3>{{ group }}</h3>
+                {% if group %}
+                    <h3>{{ group }}</h3>
+                {% else %}
+                    <h3>Default</h3>
+                {% end %}
                 {% for monitor in groups_monitors[group] %}
                     <div class="list-group-item monitor-entry">
                         <div class="d-flex w-100 justify-content-between">
