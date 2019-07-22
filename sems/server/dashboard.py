@@ -34,7 +34,7 @@ class Dashboard(tornado.web.RequestHandler):
 
         groups = set([monitor for monitor in monitors])
 
-        self.render("dashboard.html",
+        self.render("dashboard.slim.html",
                     monitor_types=monitor_types,
                     groups_monitors=monitors,
                     groups=groups,
