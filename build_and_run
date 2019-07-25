@@ -1,12 +1,17 @@
 #!/bin/bash
 
-export SEMS_DATABASE=/var/db/sems/db.json
+SEMS_VERSION="0.0.15.0"
+SEMS_BASEFOLDER="$HOME/.sems"
+
+mkdir -p $SEMS_BASEFOLDER/external
+
+export SEMS_DATABASE=$HOME/.sems/db.json
 export SEMS_DEBUG=False
 
 
-sudo pip3 uninstall sems
+pip3 uninstall sems
 python setup.py  sdist
-sudo pip3 install dist/sems-0.0.14.1.tar.gz
+pip3 install dist/sems-$SEMS_VERSION.tar.gz
 sems-start
 
 
