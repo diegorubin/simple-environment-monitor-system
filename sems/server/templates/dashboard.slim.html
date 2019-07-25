@@ -73,11 +73,9 @@
                             <label for="monitorType">Type</label>
                             <select class="form-control" id="monitorType" required>
                                 <option value="">Select ...</option>
-                                <option value="HTTPStatusMonitor">Check Status HTTP</option>
-                                <option value="SocketPortMonitor">Check Socket Port</option>
-                                <option value="TextMonitor">Check HTTP Response Content</option>
-                                <option value="ContractTestRestMonitor">Contract test rest</option>
-                                <option value="ContractTestSoapMonitor">Contract test soap</option>
+                                {% for monitor_type in monitor_types %}
+                                    <option value="{{monitor_type[1]}}">{{monitor_type[0]}}</option>
+                                {% end %}
                             </select>
                             <div class="invalid-feedback">
                                 Please, select a monitor type.
