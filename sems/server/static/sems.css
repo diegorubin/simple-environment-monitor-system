@@ -43,7 +43,6 @@ body {
     text-overflow: ellipsis;
     display: inline-block;
     font-weight: 700;
-    max-width: 75%;
     font-size: 1rem;
 }
 
