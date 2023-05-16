@@ -1,3 +1,5 @@
+Project discontinued in favor of [Lifeguard](https://github.com/LifeguardSystem) which turns out to be an evolution of SEMS.
+
 # Simple Environment Monitor System
 
 [![Join the chat at https://gitter.im/diegorubin/simple-environment-monitor-system](https://badges.gitter.im/diegorubin/simple-environment-monitor-system.svg)](https://gitter.im/diegorubin/simple-environment-monitor-system?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
