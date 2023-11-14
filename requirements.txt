@@ -1,7 +1,7 @@
 Tornado-JSON==1.2.2
 backports-abc==0.4
 backports.ssl-match-hostname==3.5.0.1
-certifi==2015.11.20.1
+certifi==2022.12.7
 functools32==3.2.3.post2
 jsonschema==2.5.1
 singledispatch==3.4.0.3
